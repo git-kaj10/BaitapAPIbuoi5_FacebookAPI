@@ -3,12 +3,13 @@ axios.get('https://graph.facebook.com/utc2hcmc/posts?access_token=EAAAAZAw4FxQIB
   .then(response => {
       var output = "";
 
-       for(var i = 0; i < 3; i++){
-          output += "<span class='title'>Bài viết "+ (i+1) + "</span></br> <span class='link'>Link:</span> " +
-          response.data.data[i].actions[0].link + "</br> <span class ='content'>Nội dung:</span> " +
-          response.data.data[i].message + "<br/>";
+      for(var i = 0; i < 3; i++){
+        output +=  "<tr><th scope='row'>" + (i + 1) + "</th>" +
+            "<td>" + response.data.data[i].actions[0].link + "</td>" +
+            "<td>" + response.data.data[i].message + "</td></tr>";
+        
        }
-      document.getElementById('output').innerHTML = output;
+      document.getElementById('content').innerHTML = output;
   })
   .catch(error => console.error(error));
 
